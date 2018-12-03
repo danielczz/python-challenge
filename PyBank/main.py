@@ -1,5 +1,3 @@
-"Esto es una prueba".
-
 import os                                                               #Import libraries to work with Python OS and CSV
 import csv
 month_counter = 0
@@ -17,10 +15,11 @@ with open(budget_data_csv_path, newline="") as csvfile:                      #Op
     # print(f"Header: {csv_header}")                                    # Print the header of the first row
                                                                         # @NOTE: This time, we do not use `next(csv_reader)` because there is no header for this file
     for row in csv_reader:                                              # Read through each row of data after the header                                        # Convert row to float and compare to grams of fiber
-             # print(f'{row[0]}		                  {row[1]}')
+             # print(f'{row[0]}                       {row[1]}')
              month_counter += 1
              PL_counter = PL_counter + int(row[1])
              data.append(row)
+
 i=0
 acumulator_avg = 0.00
 contador_avg_2 = 0.00
@@ -57,3 +56,9 @@ print(f'Average  Change: ${avg}')
 print(f'Greatest Increase in Profits: {array_average[0][0]} ${array_average[1]}')
 print(f'Greatest Decrease in Profits: {menor_array_average[0][0]} ${menor_array_average[1]}')
 
+
+f = open(csv_out_path,'w')
+
+f.write(f'Financial Analysis\n---------------------------------------\nTotal Months: {month_counter}\nTotal: ${PL_counter}\nAverage  Change: ${avg}\nGreatest Increase in Profits: {array_average[0][0]} ${array_average[1]}\nGreatest Decrease in Profits: {menor_array_average[0][0]} ${menor_array_average[1]}')
+
+f.close()
