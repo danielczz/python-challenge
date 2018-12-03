@@ -4,7 +4,7 @@ month_counter = 0           #Variables declaration and startup
 PL_counter = 0
 average_change = 0
 data = []
-
+#
 budget_data_csv_path = os.path.join("..", "Resources", "budget_data.csv")   #This is to tell the program that the CSV file is on this path (different to where .py is)
 csv_out_path = os.path.join("..","Resources","Output","PyBank_output.csv")  #Output file on csv_out_path
 
