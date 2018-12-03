@@ -21,3 +21,39 @@ with open(budget_data_csv_path, newline="") as csvfile:                      #Op
              month_counter += 1
              PL_counter = PL_counter + int(row[1])
              data.append(row)
+i=0
+acumulator_avg = 0.00
+contador_avg_2 = 0.00
+avg = 0.00
+detect_inc = []
+pre_average_change = 0
+menor_pre_average_change = 0 
+counter = 0
+array_average = [0,1]
+menor_array_average = [3,4]
+
+while i < month_counter-1:
+    average_change = int(data[i+1][1])-int(data[i][1])
+    acumulator_avg += average_change
+
+    if average_change > pre_average_change:
+        pre_average_change = average_change
+        array_average[0]=data[i+1]
+        array_average[1]=average_change
+    if average_change < menor_pre_average_change:
+        menor_pre_average_change = average_change
+        menor_array_average[0]=data[i+1]
+        menor_array_average[1]=average_change
+
+    i += 1
+
+avg = acumulator_avg/(month_counter-1)
+
+print("Financial Analysis") 
+print("---------------------------------------")   
+print(f'Total Months: {month_counter}')
+print(f'Total: ${PL_counter}')
+print(f'Average  Change: ${avg}')
+print(f'Greatest Increase in Profits: {array_average[0][0]} ${array_average[1]}')
+print(f'Greatest Decrease in Profits: {menor_array_average[0][0]} ${menor_array_average[1]}')
+
